@@ -1,0 +1,11 @@
+{
+    "Rules": [
+      {
+        "ID": "ExpireUploadedInvoices",
+        "Status": "Enabled",
+        "Filter": { "Prefix": "uploads/" },
+        "Expiration": { "Days": 30 },
+        "NoncurrentVersionExpiration": { "NoncurrentDays": 7 }
+      }
+    ]
+  }

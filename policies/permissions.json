@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ReadUploadedObjects",
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::s3-invoice-processing-pipeline-1tg0t/uploads/*"
+        },
+        {
+            "Sid": "WriteExtractedItems",
+            "Effect":"Allow",
+            "Action": "dynamodb:PutItem",
+            "Resource": "arn:aws:dynamodb:us-east-1:<account-id>:table/invoice-data"
+        },
+        {
+            "Sid": "AnalyzeItems",
+            "Effect": "Allow",
+            "Action": "textract:AnalyzeExpense",
+            "Resource": "*"
+        },
+        {
+            "Sid": "SendNotifications",
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:us-east-1:<account-id>:invoice-processing-topic"
+
+        },
+        {
+            "Sid": "WriteLogs",
+            "Effect": "Allow",
+            "Action": ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"],
+            "Resource": "arn:aws:logs:us-east-1:<account-id>:log-group:/aws/lambda/invoice-pipeline-processor:*"
+            
+
+        }
+    ]
+}
