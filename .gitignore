@@ -5,3 +5,6 @@ __MACOSX/
 
 # Lambda build artifacts
 *.zip
+
+# Personal command notes
+commands.md
